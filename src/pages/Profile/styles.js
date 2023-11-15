@@ -1,0 +1,98 @@
+import styled from "styled-components";
+
+export const Container = styled.div`
+    width: 100%;
+
+    > header {
+        width: 100%;
+        height: 144px;
+        background: ${({ theme }) => theme.COLORS.BACKGROUND_700};
+        display: flex;
+        align-items: center;
+        padding: 0 124px;
+
+        svg {
+            color: ${({ theme }) => theme.COLORS.GRAY_100};
+            font-size: 38px;
+        }
+
+        button {
+            background: none;
+            border: none;
+        }
+
+        @media (max-width:440px) {
+            height: 100px;
+            padding: 0 30px;
+        }
+    }
+`;
+
+export const Form = styled.form`
+    max-width: 360px;
+    margin: 30px auto 0;
+   
+    > div:nth-child(4) {
+        margin-top: 24px;
+    }
+
+    @media (max-width:440px) {
+        max-width: 280px;
+    }
+`;
+
+export const Avatar = styled.div`
+    position: relative;
+    margin: -124px auto 32px;
+    width: 186px; 
+    height: 186px;    
+
+    > img {
+        border-radius: 50%;
+        width: 186px; 
+        height: 186px;
+    }
+
+    @media (max-width:440px) {
+        margin: -100px auto 32px;
+        width: 120px; 
+        height: 120px; 
+        
+        > img {          
+        width: 120px; 
+        height: 120px;    
+        }
+    }
+    
+
+    > label {
+        width: 48px;
+        height: 48px;
+        background-color: ${({ theme }) => theme.COLORS.GREEN};
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        bottom: 7px;
+        right: 7px;
+        cursor: pointer;
+
+        input {
+            display: none;
+        }
+
+        svg {
+            width: 20px;
+            height: 20px;
+            color: ${({ theme }) => theme.COLORS.BACKGROUND_700};
+        }
+        
+        @media (max-width:440px) {
+            width: 38px;
+            height: 38px;
+            bottom: 5px;
+            right: 5px;
+        }
+    }
+`;
