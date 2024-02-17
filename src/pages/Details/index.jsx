@@ -90,88 +90,89 @@ export function Details() {
   }, []);
 
   return (
-    <Container>
-      <Header />
+   
+      <Container>
+        <Header />
 
-      {
-        data &&
-        <main>
-          <Content>
-            <Section title="Nome do Projeto:">
-              <Status>
-                {data.title}
-              </Status>
-            </Section>
+        {
+          data &&
+          <main>
+            <Content>
+              <Section title="Nome do Projeto:">
+                <Status>
+                  {data.title}
+                </Status>
+              </Section>
 
-            <Section title="Status:">
-              <Status>
-                {data.status}
-              </Status>
-            </Section>
+              <Section title="Status:">
+                <Status>
+                  {data.status}
+                </Status>
+              </Section>
 
-            <Section title="Prazo:">
-              <Status>
-                {formatDate(data.expected_date)}
-              </Status>
-            </Section>
+              <Section title="Prazo:">
+                <Status>
+                  {formatDate(data.expected_date)}
+                </Status>
+              </Section>
 
-            <Section title="Restam:">
-              <Status>
-                
-                {calculateDaysRemaining(data.expected_date) === 0 ? (
-                  <p>O prazo encerra hoje</p>
-                ) : (
-                  calculateDaysRemaining(data.expected_date) > 0 ? (
-                    `${calculateDaysRemaining(data.expected_date)} dias`
+              <Section title="Restam:">
+                <Status>
+
+                  {calculateDaysRemaining(data.expected_date) === 0 ? (
+                    <p>O prazo encerra hoje</p>
                   ) : (
-                    <p>O prazo encerrou há {-calculateDaysRemaining(data.expected_date)} dias</p>
-                  )
+                    calculateDaysRemaining(data.expected_date) > 0 ? (
+                      `${calculateDaysRemaining(data.expected_date)} dias`
+                    ) : (
+                      <p>O prazo encerrou há {-calculateDaysRemaining(data.expected_date)} dias</p>
+                    )
+                  )}
+
+                </Status>
+              </Section>
+
+              <Section title="Desenvolvedores:">
+
+                {
+                  data.developers &&
+
+                  data.developers.map(dev => (
+                    <Devs
+                      key={String(dev.id)}
+                      title={dev.name}
+                    />
+                  ))
+                }
+
+              </Section>
+
+              <ButtonDiv>
+                {data.status === "iniciado" && (
+                  <ButtonText
+                    title="Finalizar Projeto"
+                    onClick={handleFinalize}
+                  >
+                    <RiFileAddFill />
+                  </ButtonText>
                 )}
-                
-              </Status>
-            </Section>
 
-            <Section title="Desenvolvedores:">
-
-              {
-                data.developers &&
-
-                data.developers.map(dev => (
-                  <Devs
-                    key={String(dev.id)}
-                    title={dev.name}
-                  />
-                ))
-              }
-
-            </Section>
-
-            <ButtonDiv>
-              {data.status === "iniciado" && (
                 <ButtonText
-                  title="Finalizar Projeto"
-                  onClick={handleFinalize}
+                  style={{ color: 'red' }}
+                  title="Excluir Projeto"
+                  onClick={handleRemove}
                 >
-                  <RiFileAddFill />
+                  < RiDeleteBin3Line />
                 </ButtonText>
-              )}
+              </ButtonDiv>
 
-              <ButtonText
-                style={{ color: 'red' }}
-                title="Excluir Projeto"
-                onClick={handleRemove}
-              >
-                < RiDeleteBin3Line />
-              </ButtonText>
-            </ButtonDiv>
-
-            <Button
-              title="Voltar"
-              onClick={handleBack}
-            />
-          </Content>
-        </main>
-      }
-    </Container>
-  );
+              <Button
+                title="Voltar"
+                onClick={handleBack}
+              />
+            </Content>
+          </main>
+        }
+      </Container>
+    );  
 }

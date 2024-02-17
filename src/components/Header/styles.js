@@ -10,6 +10,7 @@ background: ${({ theme }) => theme.COLORS.BACKGROUND_900};
     border-bottom-color: ${({ theme }) => theme.COLORS.BACKGROUND_700};
 
     display: flex;
+    align-items: center;    
     justify-content: space-between;
     padding: 0 60px; 
     

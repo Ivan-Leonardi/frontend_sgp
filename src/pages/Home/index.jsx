@@ -63,7 +63,7 @@ export function Home() {
 
     return (
         <>
-            <Header />
+            <Header /> 
             <Brand>
                 <h1>Gerencie seus projetos</h1>
             </Brand>
@@ -113,7 +113,7 @@ export function Home() {
 
                 <Content>
 
-                    <Section title="Meus projetos">
+                    <Section title={projectsWithDevelopers.length > 0 ? "Meus projetos" : "Você não possui nenhum projeto"}>
                         
                         {                       
 
